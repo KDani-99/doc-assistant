@@ -1,0 +1,20 @@
+﻿<Window x:Class="Client.AssistantLoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        Title="Assistant Login Window" Height="200" Width="300"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button x:Name="Button" Content="Login" HorizontalAlignment="Right" Margin="0,0,40,10" VerticalAlignment="Bottom" Width="80" Click="Button_Click"/>
+        <Button x:Name="BackButton" Content="Cancel" HorizontalAlignment="Left" Margin="40,0,0,10" VerticalAlignment="Bottom" Width="80" Click="BackButton_Click"/>
+        <Image HorizontalAlignment="Left" Height="75" Margin="10,40,0,0" VerticalAlignment="Top" Width="100" Source="/mk.png"/>
+        <TextBlock Text="Username:" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 50, 110, 0"/>
+        <TextBlock Text="Password:" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 80, 110, 0"/>
+        <PasswordBox x:Name="passwordTB" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 80, 5, 0" Width="100"/>
+        <TextBox x:Name="usernameTB" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 50, 5, 0" Width="100"/>
+    </Grid>
+</Window>

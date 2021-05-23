@@ -1,0 +1,35 @@
+﻿<Window x:Class="Client.AssistantWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        MinWidth="750"
+        MinHeight="500"
+        Title="Assistant Window" Height="700" Width="1400"
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing" >
+    <Grid>
+        <ScrollViewer Grid.Row="0" >
+            <DataGrid x:Name="AsDataGrid" Height="684" Width="1400">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Firstname:" IsReadOnly="True" Binding="{Binding FirstName}" Width="0.5*"/>
+                    <DataGridTextColumn Header="Lastname:" IsReadOnly="True" Binding="{Binding LastName}" Width="0.5*"/>
+                    <DataGridTextColumn Header="Doctor ID:" IsReadOnly="True" Binding="{Binding DoctorId}" Width="0.5*"/>
+                    <DataGridTextColumn Header="ID:" IsReadOnly="True" Binding="{Binding Id}" Width="0.5*"/>
+                    <DataGridTextColumn Header="Gender:" IsReadOnly="True" Binding="{Binding Gender}" Width="0.5*"/>
+                    <DataGridTextColumn Header="Country:" IsReadOnly="True" Binding="{Binding Country}" Width="0.5*"/>
+                    <DataGridTextColumn Header="State:" IsReadOnly="True" Binding="{Binding State}" Width="0.5*"/>
+                    <DataGridTextColumn Header="City:" IsReadOnly="True" Binding="{Binding City}" Width="0.5*"/>
+                    <DataGridTextColumn Header="Street:" IsReadOnly="True" Binding="{Binding Street}" Width="0.5*"/>
+                    <DataGridTextColumn Header="ZIP:" IsReadOnly="True" Binding="{Binding ZIP}" Width="0.5*"/>
+                    <DataGridTextColumn Header="SSN:" IsReadOnly="True" Binding="{Binding SSN}" Width="0.5*"/>
+                    <DataGridTextColumn Header="Date of Birth:" IsReadOnly="True" Binding="{Binding DateOfBirth}" Width="1*"/>
+                    <DataGridTextColumn Header="Arrive time:" IsReadOnly="True" Binding="{Binding ArriveTime}" Width="1*"/>
+                    <DataGridTextColumn Header="Complaint:" IsReadOnly="True" Binding="{Binding Complaint}" Width="1.5*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+        <Button x:Name="AssistantPatientAdd" Content="Add Patient Data" HorizontalAlignment="Center"  FontSize="20" Width="200" Height="50" Margin="0,0,0,25" VerticalAlignment="Bottom" Click="AssistantPatientAdd_Click"/>
+    </Grid>
+</Window>
