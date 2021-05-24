@@ -103,7 +103,7 @@ namespace Client.Utils
             }
         }
         
-        public static async Task<bool> CreateDiagnosis(Diagnosis diagnosis)
+        public static async Task<Diagnosis> CreateDiagnosis(Diagnosis diagnosis)
         {
             try
             {
@@ -113,16 +113,16 @@ namespace Client.Utils
                 if (response.StatusCode == HttpStatusCode.BadRequest)
                 {
                     ShowRequestErrors(await response.Content.ReadAsStringAsync());
-                    return false;
+                    return null;
                 }
                 if (response.StatusCode != HttpStatusCode.OK) throw new Exception("An unexpected error has occured");
                 
-                return true;
+                return JsonConvert.DeserializeObject<Diagnosis>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message, "Failed to add diagnosis", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
+                return null;
             }
         }
 

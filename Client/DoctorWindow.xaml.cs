@@ -30,7 +30,7 @@ namespace Client
 
         private async Task GetPatients()
         {
-            var patients = new PatientList<Patient>(await HttpHandler.LoadPatients());
+            var patients = new List<Patient>(await HttpHandler.LoadPatients());
 
             var hash = Convert.ToHexString(
                 Security.ComputeHash(JArray.FromObject(patients).ToString(Formatting.None)));

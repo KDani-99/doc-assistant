@@ -36,10 +36,12 @@ namespace Client
                 Title = DiagnosisTitle.Text,
                 Description = DianosisDescription.Text
             };
+
+            var uploadedDiagnosis = await HttpHandler.CreateDiagnosis(diagnosis);
             
-            if (await HttpHandler.CreateDiagnosis(diagnosis))
+            if (uploadedDiagnosis is not null)
             {
-                Patient.Diagnoses.Add(diagnosis);
+                Patient.Diagnoses.Add(uploadedDiagnosis);
                 MessageBox.Show("Successful", "Successful request",MessageBoxButton.OK, MessageBoxImage.Information);
                 Close();
             }

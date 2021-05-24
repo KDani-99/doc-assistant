@@ -17,9 +17,9 @@ namespace DocAssistantWebApi.Tests
     public class PatientControllerTests
     {
 
-        private PatientController CreatePatientController(IRepository<Patient> mockPatientRepository, IRepository<Assistant> mockAssistantRepository)
+        private PatientController CreatePatientController(IRepository<Patient> mockPatientRepository, IRepository<Assistant> mockAssistantRepository, IRepository<Diagnosis> mockDiagnosisRepository)
         {
-            var patientController = new PatientController(mockPatientRepository,mockAssistantRepository);
+            var patientController = new PatientController(mockPatientRepository,mockAssistantRepository,mockDiagnosisRepository);
             patientController.ControllerContext = new Mock<ControllerContext>().Object;
             patientController.ControllerContext.HttpContext = new DefaultHttpContext();
             patientController.HttpContext.Items = new Dictionary<object, object?>
@@ -47,8 +47,10 @@ namespace DocAssistantWebApi.Tests
 
             var mockAssistantRepository = new Mock<IRepository<Assistant>>();
 
+            var mockDiagnosisRepository = new Mock<IRepository<Diagnosis>>();
+            
             var patientController =
-                CreatePatientController(mockPatientRepository.Object, mockAssistantRepository.Object);
+                CreatePatientController(mockPatientRepository.Object, mockAssistantRepository.Object,mockDiagnosisRepository.Object);
 
             // Act
             var result = await patientController.LoadPatient(type, patient.Id);
@@ -77,8 +79,10 @@ namespace DocAssistantWebApi.Tests
             
             var mockAssistantRepository = new Mock<IRepository<Assistant>>();
 
+            var mockDiagnosisRepository = new Mock<IRepository<Diagnosis>>();
+            
             var patientController =
-                CreatePatientController(mockPatientRepository.Object, mockAssistantRepository.Object);
+                CreatePatientController(mockPatientRepository.Object, mockAssistantRepository.Object,mockDiagnosisRepository.Object);
 
             // Act
             var result = await patientController.LoadPatient(type, null);
@@ -113,8 +117,10 @@ namespace DocAssistantWebApi.Tests
             
             var mockAssistantRepository = new Mock<IRepository<Assistant>>();
             
+            var mockDiagnosisRepository = new Mock<IRepository<Diagnosis>>();
+            
             var patientController =
-                CreatePatientController(mockPatientRepository.Object, mockAssistantRepository.Object);
+                CreatePatientController(mockPatientRepository.Object, mockAssistantRepository.Object,mockDiagnosisRepository.Object);
             // Act
             var result = await patientController.AddPatient(patient);
             // Assert
@@ -143,8 +149,10 @@ namespace DocAssistantWebApi.Tests
             
             var mockAssistantRepository = new Mock<IRepository<Assistant>>();
             
+            var mockDiagnosisRepository = new Mock<IRepository<Diagnosis>>();
+            
             var patientController =
-                CreatePatientController(mockPatientRepository.Object, mockAssistantRepository.Object);
+                CreatePatientController(mockPatientRepository.Object, mockAssistantRepository.Object,mockDiagnosisRepository.Object);
             // Assert
             await Assert.ThrowsExceptionAsync<GenericRequestException>(() => patientController.AddPatient(patient));
         }
@@ -169,8 +177,10 @@ namespace DocAssistantWebApi.Tests
             
             var mockAssistantRepository = new Mock<IRepository<Assistant>>();
             
+            var mockDiagnosisRepository = new Mock<IRepository<Diagnosis>>();
+            
             var patientController =
-                CreatePatientController(mockPatientRepository.Object, mockAssistantRepository.Object);
+                CreatePatientController(mockPatientRepository.Object, mockAssistantRepository.Object,mockDiagnosisRepository.Object);
             // Act
             var result = await patientController.UpdateData(patient);
             
@@ -198,8 +208,10 @@ namespace DocAssistantWebApi.Tests
             
             var mockAssistantRepository = new Mock<IRepository<Assistant>>();
             
+            var mockDiagnosisRepository = new Mock<IRepository<Diagnosis>>();
+            
             var patientController =
-                CreatePatientController(mockPatientRepository.Object, mockAssistantRepository.Object);
+                CreatePatientController(mockPatientRepository.Object, mockAssistantRepository.Object,mockDiagnosisRepository.Object);
             // Act
             var result = await patientController.DeletePatient(patient.Id);
             // Assert
@@ -227,14 +239,17 @@ namespace DocAssistantWebApi.Tests
                 .ReturnsAsync(true);
             
             var mockAssistantRepository = new Mock<IRepository<Assistant>>();
+            
+            var mockDiagnosisRepository = new Mock<IRepository<Diagnosis>>();
+            
             var patientController =
-                CreatePatientController(mockPatientRepository.Object, mockAssistantRepository.Object);
+                CreatePatientController(mockPatientRepository.Object, mockAssistantRepository.Object,mockDiagnosisRepository.Object);
             // Act
             
             var result = await patientController.AddDiagnosis(patient.Id,diagnosis);
             
             // Assert
-            var objectResult = result as OkResult;
+            var objectResult = result as OkObjectResult;
             
             Assert.IsNotNull(objectResult);
         }

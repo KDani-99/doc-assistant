@@ -42,6 +42,7 @@ namespace DocAssistantWebApi
             services.AddSingleton<IRepository<Doctor>, DoctorRepository>();
             services.AddSingleton<IRepository<Patient>, PatientRepository>();
             services.AddSingleton<IRepository<Assistant>, AssistantRepository>();
+            services.AddSingleton<IRepository<Diagnosis>, DiagnosisRepository>();
             
             services.AddSingleton<IAuthService<Doctor>, DoctorAuthService>();
             services.AddSingleton<IAuthService<Assistant>, AssistantAuthService>();

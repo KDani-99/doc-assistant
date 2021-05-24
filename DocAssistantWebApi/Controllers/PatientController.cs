@@ -23,11 +23,13 @@ namespace DocAssistantWebApi.Controllers
 
         private readonly IRepository<Patient> _patientRepository;
         private readonly IRepository<Assistant> _assistantRepository;
+        private readonly IRepository<Diagnosis> _diagonisRepository;
 
-        public PatientController(IRepository<Patient> repository,IRepository<Assistant> assistantRepository)
+        public PatientController(IRepository<Patient> repository,IRepository<Assistant> assistantRepository, IRepository<Diagnosis> diagonisRepository)
         {
             this._patientRepository = repository;
             this._assistantRepository = assistantRepository;
+            this._diagonisRepository = diagonisRepository;
         }
 
         [Authorize(Policy = "AssistantRequirement")]
@@ -231,7 +233,7 @@ namespace DocAssistantWebApi.Controllers
                 };
             }
             
-            return Ok();
+            return Ok(diagnosis);
         }
         
         [Authorize(Policy = "DoctorRequirement")]
@@ -259,9 +261,10 @@ namespace DocAssistantWebApi.Controllers
                     StatusCode = 400
                 };
 
-            check.Diagnoses = check.Diagnoses.Where(diagnosis => diagnosis.Id != diagnosisId).ToList();
 
-            if (!await this._patientRepository.Update(check))
+            
+
+            if (await _diagonisRepository.DeleteWhere(diagnosis => diagnosis.Id == diagnosisId) == 0)
             {
                 throw new GenericRequestException
                 {

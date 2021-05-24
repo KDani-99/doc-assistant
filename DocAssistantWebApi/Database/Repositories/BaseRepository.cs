@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DocAssistantWebApi.Database.Repositories
 {
-    public abstract class BaseRepository<T> : IRepository<T> where T : Person
+    public abstract class BaseRepository<T> : IRepository<T> where T : Entity
     {
 
         protected readonly IDatabaseFactory DatabaseFactory;
