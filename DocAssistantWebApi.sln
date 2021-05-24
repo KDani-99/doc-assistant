@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocAssistant_Shared", "DocA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocAssistantWebApi.Tests", "DocAssistantWebApi.Tests\DocAssistantWebApi.Tests.csproj", "{F5CD6417-3963-462D-82B4-6A4C9828337C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{40EBEE67-17CA-4A99-BE5B-08662B11480B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{F5CD6417-3963-462D-82B4-6A4C9828337C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5CD6417-3963-462D-82B4-6A4C9828337C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5CD6417-3963-462D-82B4-6A4C9828337C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40EBEE67-17CA-4A99-BE5B-08662B11480B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40EBEE67-17CA-4A99-BE5B-08662B11480B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40EBEE67-17CA-4A99-BE5B-08662B11480B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40EBEE67-17CA-4A99-BE5B-08662B11480B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
